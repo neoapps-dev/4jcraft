@@ -61,7 +61,7 @@ jobs:
           CCACHE_DIR: ${{ runner.temp }}/ccache
         run: |
           export CCACHE_DIR="${{ runner.temp }}/ccache"
-          meson compile -C build -j $(nproc) -v Minecraft.Client
+          meson compile -C build -j $(nproc)
 
       - name: Install patchelf
         run: sudo apt-get install -y patchelf
@@ -79,7 +79,6 @@ jobs:
           retention-days: 7
 
       - name: Create nightly release
-        if: github.event_name == 'push'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: nightly
