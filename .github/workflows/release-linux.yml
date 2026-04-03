@@ -1,6 +1,7 @@
 name: Nightly (Linux, x86-64)
 
 on:
+  workflow_dispath:
   push:
     paths: &workflow_paths
       - '**.cpp'
@@ -15,9 +16,6 @@ on:
       - "**meson.build"
       - "flake.nix"
       - '.github/workflows/build-linux.yml'
-
-  pull_request:
-    paths: *workflow_paths
 
 jobs:
   build-linux:
